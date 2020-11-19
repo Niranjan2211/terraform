@@ -22,6 +22,6 @@ terraform taint
 
 terraform get
 
-terraform graph
+terraform graph # Graphviz Online
 
 
