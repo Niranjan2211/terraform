@@ -24,4 +24,4 @@ terraform get
 
 terraform graph # Graphviz Online
 
-
+terraform apply --target=
