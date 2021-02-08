@@ -23,6 +23,16 @@ output "host_id" {
 output "subnet_id" {
   value = aws_instance.app.subnet_id
 }
-output "security_groups" {
-  value = aws_instance.app.security_groups
+output "aws_security_group" {
+  value = aws_security_group.aws_sg.vpc_id
+}
+output "aws_group_name" {
+  value = aws_security_group.aws_sg.name
+}
+output "amiids" {
+  value = data.aws_ami.amazonami.id
+}
+
+output "t2-instances" {
+  value = data.aws_ec2_instance_type_offerings.t2.instance_types
 }

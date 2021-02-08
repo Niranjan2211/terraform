@@ -4,10 +4,15 @@ provider "aws" {
   #  profile                    = "pocaws"
 
 }
-/*
+
 provider "google" {
-credentials = "${file("/root/gcp.json")}"
+credentials = file("/root/gcp.json")
 project = "My First Project"
 region = "europe-west1"
+#region = "us-west1"
+#zone = "us-west1-a"
+zone = "europe-west1-a"
 }
-*/
+provider "azurerm" {
+  features {}
+}
