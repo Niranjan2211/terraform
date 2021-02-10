@@ -1,8 +1,22 @@
+/*
+resource "aws_key_pair" "terraform-demo" {
+  key_name   = "terraform-demo"
+  public_key = file("terraform-demo.pub")
+  }
+  */
 resource "aws_instance" "app" {
  instance_type = var.instance
+ key_name = "terraform-demo"
  ami = var.image
  user_data = var.user_data
 }
+resource "aws_instance" "app-01" {
+ instance_type = var.instance
+ key_name = "aws-demo"
+ ami = var.image
+ user_data = var.user_data
+}
+/*
 resource "aws_security_group" "aws_sg" {
   #name        = "aws_sg"
   #description = "Allow TLS inbound traffic"
@@ -21,23 +35,7 @@ resource "aws_security_group" "aws_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-data "aws_ami" "amazonami" {
-  most_recent = true
-  #name_regex  = "^Windows_Server-2019*"
-  owners      = ["amazon"]
-
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm-2.0*"]
-  }
-/*
-  filter {
-    name   = "architecture"
-    values = ["x86*"]
-    
-  }*/
-}
+*/
 data "aws_ec2_instance_type_offerings" "t2" {
   location_type = "region"
 
@@ -47,7 +45,22 @@ data "aws_ec2_instance_type_offerings" "t2" {
 
   }
 }
+/*
+data "aws_ami_ids" "ids" {
+  #name_regex  = "^Windows_Server-2019*"
+  owners      = ["amazon"]
 
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-2.0*"]
+  }
+
+  filter {
+    name   = "architecture"
+    values = ["x86*"]
+  }
+}
+*/
 ###############################################
 /*
 resource "google_compute_instance" "centos7" {
@@ -66,6 +79,21 @@ network_interface {
        access_config {
                      }
                          }
-
 }
 */
+/*
+data "aws_ami" "amazonlinux" {
+  most_recent = true
+  #name_regex  = "^Windows_Server-2019*"
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-2.0*"]
+  }
+
+  filter {
+    name   = "architecture"
+    values = ["x86*"]
+  }
+} */
